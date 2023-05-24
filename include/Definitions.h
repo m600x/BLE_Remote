@@ -21,14 +21,21 @@
  * Apps definition
 *******************************************************************************/
 
-#define APP_UNITS    3
+typedef struct {
+    String name;
+    const unsigned char *logo PROGMEM;
+    String keyShortName[5];
+    uint8_t keyShortMap[5];
+    String keyLongName[5];
+    uint8_t keyLongMap[5];
+} app_unit; 
 
 const app_unit osmand = {"OsmAnd+",
                         LOGO_OSMAND,
-                        {"UP", "LEFT", "DOWN", "RIGHT", "MyLoc"},
-                        {KEY_UP_ARROW, KEY_LEFT_ARROW, KEY_DOWN_ARROW, KEY_RIGHT_ARROW, 'C'},
-                        {"ZOOM +", "ZOOM -", "ZOOM -", "ZOOM +", "Orientation"},
-                        {KEY_NUM_PLUS, KEY_NUM_MINUS,  KEY_NUM_PLUS,  KEY_NUM_MINUS,    'D'}};
+                        {"UP", "LEFT", "DOWN", "RIGHT", "My location"},
+                        {KEY_UP_ARROW, KEY_LEFT_ARROW, KEY_DOWN_ARROW, KEY_RIGHT_ARROW, 'c'},
+                        {"Zoom +", "Zoom -", "Zoom -", "Zoom +", "Orientation"},
+                        {KEY_NUM_PLUS, KEY_NUM_MINUS,  KEY_NUM_MINUS,  KEY_NUM_PLUS,    'd'}};
 const app_unit scenic = {"Scenic",
                         LOGO_SCENIC,
                         {"UP", "LEFT", "DOWN", "RIGHT", "Enter"},
@@ -49,13 +56,5 @@ const uint8_t *keymap_media[5] = {
                                     KEY_MEDIA_PLAY_PAUSE
                                 };
 
+#define APP_UNITS    3
 const app_unit apps[] = {osmand, scenic, spotify};
-
-typedef struct {
-    String name;
-    const unsigned char *logo PROGMEM;
-    String keyShortName[5];
-    uint8_t keyShortMap[5];
-    String keyLongName[5];
-    uint8_t keyLongMap[5];
-} app_unit; 

@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include "heltec.h"
 #include <BleKeyboard.h>
-#include "Definitions.h"
 #include "Images.h"
+#include "Definitions.h"
 
 BleKeyboard bleKeyboard(BLE_NAME, BLE_AUTHOR, 100);
 
@@ -21,7 +21,7 @@ void displayProfil(bool splash=false) {
         delay(SPLASH_TIMEOUT_MS);
         Heltec.display->clear();
     }
-    Heltec.display->drawString(120, 0, "Running mode:");
+    Heltec.display->drawString(120, 0, "Mode:");
     Heltec.display->drawXbm(0, 0, 128, 64, apps[app_index].logo);
     Heltec.display->display();
     scr_timeout = millis() + SCREEN_TIMEOUT_MS;
@@ -92,7 +92,7 @@ void readJoystick() {
         previousButton = -1;
     }
     if (digitalRead(PIN_A) == 1 && digitalRead(PIN_B) == 1 &&
-                digitalRead(PIN_C) == 1 && digitalRead(PIN_D) == 1 && digitalRead(PIN_CENTER) == 0) {
+                digitalRead(PIN_C) == 1 && digitalRead(PIN_D) == 1 && digitalRead(PIN_CENTER) == 0)
         return sendKey(PIN_CENTER, 4);
     if (digitalRead(PIN_A) == 0)
         return sendKey(PIN_A, 0);
